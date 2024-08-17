@@ -6,7 +6,7 @@
  This work is licensed under a Creative Commons License !
  See: http://creativecommons.org/licenses/by-nc-nd/2.5/
 */
-var MapLoc = "./FHX_MobMap/imgs/";
+var MapLoc = "FHX_MobMap/imgs/";
 var domImgCell = document.getElementById("ImgCell");
 var domImgDiv = document.getElementById("ImgDiv");
 var domMapImg = document.getElementById("MapImg");
@@ -88,7 +88,7 @@ function ShowNPC(){
 		if( Maps[domMapSelect.selectedIndex-1].NPCs[domNPCSelect.selectedIndex-1].Img )
 			domNPCImg.src = NPCLoc + Maps[domMapSelect.selectedIndex-1].NPCs[domNPCSelect.selectedIndex-1].Img;
 		else
-			domNPCImg.src = "./FHX_MobMap/UnKnown.gif";
+			domNPCImg.src = "FHX_MobMap/UnKnown.gif";
 };
 function CapitalizeNSortNPCs(){
 	var loopMap, loopNPC;
@@ -264,7 +264,8 @@ var Maps = new Array(
 		)
 	),new Map("Foggy", 625, 450,
 		new Array(
-			new NPC("Dark Wizard", "DarkWizard.gif"
+			new NPC("Arena Manager", "Arena.gif"
+			),new NPC("Dark Wizard", "DarkWizard.gif"
 			),new NPC("Dark Priest", "DarkPriest.gif"
 			),new NPC("Small Blackstone Scorpion", "Blackstone1.gif"
 			),new NPC("Blackstone Scorpion", "Blackstone1.gif"
@@ -279,16 +280,27 @@ var Maps = new Array(
 			),new NPC("Deformed Skeleton Archer", "DeformedSkeletons.gif"
 			),new NPC("Deformed Skeleton Warrior", "DeformedSkeletons.gif"
 			),new NPC("Deformed skull warrior", "DeformedSkullWarrior.gif"
+			),new NPC("Dusty Slime", "DustySlime.gif"
 			),new NPC("Skeleton Lord", "DeformedSkeletons.gif"
 			),new NPC("Deformed Zombie", "DeformedZombie.gif"
+			),new NPC("Devil's Den Forest Spider", "WindForestSpider.gif"
 			),new NPC("Fog Wolf", "FogWolf.gif"
 			),new NPC("Giant Corpse Scorpion", "GiantCorpseScorpion.gif"
 			),new NPC("Giant Oblivious Spider", "GiantObliviousSpider.gif"
+			),new NPC("Green Slime", "GreenSlime.gif"
 			),new NPC("Ghoul", "Graveyard2.gif"
+			),new NPC("Hill Goblin", "HillGoblin.gif"
+			),new NPC("Hill Goblin Magician", "HillGoblin.gif"
+			),new NPC("Hill Goblin Patrol", "HillGoblin.gif"
+			),new NPC("Hill Goblin Warrior", "HillGoblin.gif"
+			),new NPC("Hill Goblin Commander", "HillGoblinCK.gif"
+			),new NPC("Hill Goblin Shaman King", "HillGoblinCK.gif"
 			),new NPC("Injured Ghoul", "Graveyard2.gif"
+			),new NPC("Killer Crocodile", "KillerCrocodile.gif"
 			),new NPC("Clumsey Grave Robber", "Graveyard2.gif"
 			),new NPC("Lich", "Lich.gif"
 			),new NPC("Lich Guardian", "Lich.gif"
+			),new NPC("Lycanthrope Warrior", "LycanthropeWarrior.gif"
 			),new NPC("Grave Robber", "Graveyard1.gif"
 			),new NPC("Mutated Bloodsucking Bat", "MutatedBloodsuckingBat.gif"
 			),new NPC("Oblivious Spider", "ObliviousSpider.gif"
@@ -318,28 +330,39 @@ var Maps = new Array(
 			),new NPC("Small Zombie Dog", "SmallZombieDog.gif"
 			),new NPC("Skeleton", "SmallZombieDog.gif"
 			),new NPC("Skeleton Warrior", "Skeleton.gif"
+			),new NPC("Small Grey Maned Wolf", "GreyManedWolf.gif"
+			),new NPC("Giant Grey Maned Wolf", "GreyManedWolf.gif"
+			),new NPC("Sunrise Shaikin", "SunriseShaikin.gif"
+			),new NPC("Sunrise Black Crocodile", "KillerCrocodile.gif"
+			),new NPC("Sunrise Crocodile", "SunriseCrocodile.gif"
+			),new NPC("Vicious Sunrise Shaikin", "SunriseShaikin.gif"
+			),new NPC("Windy Forest Hairy Spider", "WindForestSpider.gif"
+			),new NPC("Windy Valley Black Bear", "WindValleyBear.gif"
+			),new NPC("Windy Valley Brown Bear", "WindValleyBear.gif"
 			),new NPC("Zombie Tyrant", "ZombieTyrant.gif"
 			),new NPC("Zombie Dog", "Graveyard1.gif"
+			),new NPC("Vagabond Lycanthrope", "VagabondLycanthrope.gif"
 			)
 		)
-	),new Map("Dusty", 512, 384,
+	),new Map("Dusty", 512, 425,
 		new Array(
 			new NPC("Slime", "DustySlime.gif"
-			),new NPC("Orc Archer", "DustyOrcArcher.gif"
-			),new NPC("Orc Blacksmith", "DustyOrcBlacksmith.gif"
-			),new NPC("Orc Warrior", "DustyOrcWarrior.gif"
-			),new NPC("Orc Warrior Commander", "DustyOrcWarriorCommander.gif"
-			),new NPC("Orc Messenger", "DustyOrcMessenger.gif"
-			),new NPC("Orc Rogue", "DustyOrcRogue.gif"
-			),new NPC("Oak Thief", "DustyOakThief.gif"
+			),new NPC("Dusty Orc Archer", "DustyOrcArcher.gif"
+			),new NPC("Devil's Den Blacksmith", "DevilsDenBlacksmith.gif"
+			),new NPC("Dusty Orc Warrior", "DustyOrcWarrior.gif"
+			),new NPC("Dusty Orc Warrior Commander", "DustyOrcWarriorCommander.gif"
+			),new NPC("Dusty Orc Lord", "DevilsDenBlacksmith.gif"
+			),new NPC("Dusty Orc Messenger", "DustyOrcMessenger.gif"
+			),new NPC("Dusty Orc Rogue", "DustyOrcRogue.gif"
+			),new NPC("Dusty Orc Thief", "DustyOakThief.gif"
 			),new NPC("Black Gorge Wolf", "BlackGorgeWolf.gif"
-			),new NPC("Lycanslope Hunter", "LycanslopeHunter.gif"
-			),new NPC("Lycanslope Predator", "LycanslopePredator.gif"
-			),new NPC("Lycan Slope", "Lycanslope.gif"
-			),new NPC("Lycan Slope Thief", "LycanslopeThief.gif"
-			),new NPC("Lycan Huges", "LycanHuges.gif"
-			),new NPC("Vicious Lycan Slope", "ViciousLycanslope.gif"
-			),new NPC("Vagabond Lycan Slope Warrior", "VagabondLycanslopeWarrior.gif"
+			),new NPC("Lycanthrope Hunter", "LycanslopeHunter.gif"
+			),new NPC("Lycanthrope Predator", "LycanslopePredator.gif"
+			),new NPC("Lycanthrope", "Lycanthrope.gif"
+			),new NPC("Lycanthrope Leader", "LycanthropeLeader.gif"
+			),new NPC("Lycanthrope Thief", "LycanslopeThief.gif"
+			),new NPC("Vicious Lycanthrope", "ViciousLycanslope.gif"
+			),new NPC("Vagabond Lycanthrope Warrior", "VagabondLycanslopeWarrior.gif"
 			),new NPC("Vagabond Werewolf", "VagabondWerewolf.gif"
 			),new NPC("Werewolf Hunter", "WerewolfHunter.gif"
 			),new NPC("Small Rock Bat", "SmallRockBat.gif"
@@ -351,15 +374,73 @@ var Maps = new Array(
 			),new NPC("Dusty Hobgoblin", "DustyHobgoblin.gif"
 			),new NPC("Dusty Hobgoblin Warrior", "DustyHobgoblinWarrior.gif"
 			),new NPC("Dusty Hobgoblin Commander", "DustyHobgoblinWarrior.gif"
-			),new NPC("Dusty Hobgoblin Rogue", "DustyHobgoblinWarrior.gif"
+			),new NPC("Dusty Hobgoblin Captain", "DustyHobgoblinCaptain.gif"
+			),new NPC("Dusty Hobgoblin Patriarch", "DustyHobgoblinCaptain.gif"
+			),new NPC("Vagabond Lycanthrope Warrior", "VagabondLycanthropeWarrior.gif"
+			),new NPC("Grey Dusty Wolf", "GreyDustyWolf.gif"
+			),new NPC("Black Dusty Wolf", "BlackDustyWolf.gif"
 			)
 		)
-	
+	),new Map("Palmas", 520, 427,
+		new Array(
+			new NPC("Plain Lion", "PlainLion.gif"
+			),new NPC("Plain Lioness", "PlainLion.gif"
+			),new NPC("Small Plain Lion", "PlainLion.gif"
+			),new NPC("Albino Plain Lion", "AlbinoPlainLion.gif"
+			),new NPC("Albino Plain Lioness", "AlbinoPlainLion.gif"
+			),new NPC("Silver Werewolf", "SilverWerewolf.gif"
+			),new NPC("Lake Slime", "LakeSlime.gif"
+			),new NPC("Valley Scorpion", "ValleyScorpion.gif"
+			),new NPC("Valley Scorpion", "SmallValleyScorpion.gif"
+			),new NPC("Wolf Spider", "WolfSpider.gif"
+			),new NPC("Red Scorpion", "RedScorpion.gif"
+			),new NPC("Lake Killer Crocodile", "LakeKillerCrocodile.gif"
+			),new NPC("Palmas Thief", "Palmasthief.gif"
+			),new NPC("Palmas Savage", "Palmasthief.gif"
+			),new NPC("Palmas Defector Bowman", "PalmasDefectorBowman.gif"
+			)
+		)
+	),new Map("GYPSY", 520, 427,
+		new Array(
+			new NPC("barried sand golem", "barried_sand_golem.jpg"
+			),new NPC("bronze gorgon", "bronze_gorgon.jpg"
+			),new NPC("copper gorgon", "copper_gorgon.jpg"
+			),new NPC("deformed ogre ", "deformed_ogre.jpg"
+			),new NPC("deformed wild troll 53", "deformed_wild_troll_53.jpg"
+			),new NPC("dread manticore", "dread_manticore.jpg"
+			),new NPC("dwarf orc archer", "dwarf_orc_archer.jpg"
+			),new NPC("dwarf orc lord", "dwarf_orc_lord.jpg"
+			),new NPC("dwarf orc magican", "dwarf_orc_magican.jpg"
+			),new NPC("dwarf orc shamen", "dwarf_orc_shamen.jpg"
+			),new NPC("dwarf orc warrior", "dwarfwarrior.gif"
+			),new NPC("dwarf orc", "dwarf_orc.jpg"
+			),new NPC("giant tarantula", "giant_tarantula.jpg"
+			),new NPC("gypsy hobgoblin patriah", "gypsy_hobgoblin_patriah.jpg"
+			),new NPC("gypsy hobgoblin warlord fiughter captain commander", "gypsy_hobgoblin_warlord_fiughter_captain_commander.jpg"		
+			),new NPC("gypsy hobgoblin warrior.jpg", "gypsy_hobgoblin_warrior.jpg"
+			),new NPC("gypsy hobgoblin.jpg", "gypsy_hobgoblin.jpg"
+			),new NPC("iron gorgon.jpg", "iron_gorgon.jpg"
+			),new NPC("manticore.jpg", "manticore.jpg"
+			),new NPC("ogre berseker.jpg", "ogre_berseker.jpg"
+			),new NPC("ogre destroyer.jpg", "ogre_destroyer.jpg"
+			),new NPC("ogre warrior.jpg", "ogre_warrior.jpg"
+			),new NPC("ogre.jpg", "ogre.jpg"
+			),new NPC("poison manticore.jpg", "poison_manticore.jpg"
+			),new NPC("Strong sand Goem.jpg", "strong_sand_goem.jpg"
+			),new NPC("strong_sand_golem.jpg", "strong_sand_golem.jpg"
+			),new NPC("tarantula 53.jpg", "tarantula_53.jpg"
+			),new NPC("troll again.jpg", "troll_again.jpg"
+			),new NPC("troll invader.jpg", "troll_invader.jpg"
+			),new NPC("troll warrior.jpg", "troll_warrior.jpg"
+			),new NPC("troll.jpg", "troll.jpg"
+			)
+		)	
 	),new Map("v1", 420, 461,
 		new Array(
 			new NPC("Alligator 12", "Alligator12.gif"
 			),new NPC("Amazon Manticore 49", "AmazonManticore49.gif"
 			),new NPC("Amemit 24", "Amemit24.gif"
+			),new NPC("Wildness Ratmen Lv29", "WildnessRatmenLv29.gif"
 			),new NPC("Ancient Blue Draconic 54", "AncientBlueDraconic54.gif"
 			),new NPC("Ancient Zombie 18", "AncientZombie18.gif"
 			),new NPC("Barrier Sand Golem 56", "BarrierSandGolem56.gif"
@@ -446,7 +527,7 @@ var Maps = new Array(
 			),new NPC("Kujo 10", "Kujo10.gif"
 			),new NPC("Latern Skeleton 17", "LaternSkeleton17.gif"
 			),new NPC("Lava Skeleton 25", "LavaSkeleton25.gif"
-			),new NPC("Lion", "Grizzly.gif"
+			),new NPC("Lion 9", "Grizzly.gif"
 			),new NPC("Lizardman 33", "Lizardman.gif"
 			),new NPC("Lizardman Tarter 36", "LizardmanTarter.gif"
 			),new NPC("Lizardman Troglodyte 35", "Lizardman.gif"
@@ -468,7 +549,7 @@ var Maps = new Array(
 			),new NPC("Mire Golem 40", "MireGolem40.gif"
 			),new NPC("Mire Golem 62", "DarkSandGolem63.gif"
 			),new NPC("Mobile Shop", "MobileShop.gif"
-			),new NPC("Ogre 43", "Ogres.gif"
+			),new NPC("Ogre 43", "Ogres43.gif"
 			),new NPC("Ogre Berserker 51", "HattiPoisonManticore48.gif"
 			),new NPC("Ogre Destroyer 49", "Ogres.gif"
 			),new NPC("Ogre Executioner 47", "Ogres.gif"
