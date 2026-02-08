@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AO Pet Renamer - Fixed Version</title>
+    <title>Skuly's - AO Pet Renamer</title>
     <style>
         * {
             box-sizing: border-box;
@@ -508,6 +508,7 @@
             border-top: 1px solid #1a2340;
             color: #8a9bb2;
             font-size: 0.9rem;
+            position: relative;
         }
         
         .button-group {
@@ -572,6 +573,42 @@
             border-top: none;
         }
         
+        /* Hover image styles */
+		.hover-image {
+			display: none;
+			position: absolute;
+			z-index: 100;
+			border: 2px solid #3a5fe5;
+			border-radius: 5px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+			background-color: #0a0a12;
+			padding: 5px;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			margin-bottom: 10px;
+		}
+		
+		.hover-container {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.hover-text {
+			color: #00e1ff; /* AO cyan color to match your theme */
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		
+		.hover-text:hover {
+			color: #3a5fe5; /* AO blue on hover */
+		}
+		
+		/* Show image when hovering over the container OR the text */
+		.hover-container:hover .hover-image {
+			display: block;
+		}
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .banner-content {
@@ -595,27 +632,35 @@
             .ao-logo-text {
                 font-size: 2rem;
             }
+            
+            .scripts-folder-img {
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .scripts-folder-img {
+                max-width: 200px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Anarchy Online Header Banner -->
     <div class="ao-header">
         <div class="banner-content">
             <div class="ao-logo">
                 <div>
-                    <div class="ao-logo-text">ANARCHY ONLINE</div>
+                    <div class="ao-logo-text">Skuly's Pet Renamer Tool</div>
                 </div>
             </div>
             <div class="tool-title">
-                <h1>Pet Renamer Tool</h1>
-                <p class="subtitle">Create Color-Coded Pet Names</p>
+                
+                <p class="subtitle">Create Color-Coded Pet Names in Anarchy Online</p>
             </div>
         </div>
     </div>
     
     <div class="container">
-        <!-- Decorative corners -->
         <div class="ao-corner corner-tl"></div>
         <div class="ao-corner corner-tr"></div>
         <div class="ao-corner corner-bl"></div>
@@ -627,7 +672,6 @@
             <button class="tab-button" data-tab="rainbow">Rainbow Letters</button>
         </div>
         
-        <!-- Single Color Tab -->
         <div class="tab-content active" id="single-tab">
             <div class="panel">
                 <h2>Single Color Pet Name</h2>
@@ -635,7 +679,6 @@
                 <div class="input-group">
                     <h3>Step 1: Choose Color</h3>
                     <div class="color-palette" id="single-color-palette">
-                        <!-- Colors will be populated by JavaScript -->
                     </div>
                     
                     <h3>Step 2: Enter Pet Name</h3>
@@ -663,7 +706,6 @@
             </div>
         </div>
         
-        <!-- Multi-Color Tab -->
         <div class="tab-content" id="multi-tab">
             <div class="panel">
                 <h2>Multi-Color Pet Name</h2>
@@ -671,7 +713,6 @@
                 <div class="input-group">
                     <h3>Step 1: Choose Color</h3>
                     <div class="color-palette" id="multi-color-palette">
-                        <!-- Colors will be populated by JavaScript -->
                     </div>
                     
                     <h3>Step 2: Add Color Segments</h3>
@@ -693,7 +734,6 @@
                 
                 <h3>Current Segments:</h3>
                 <div class="segments-container" id="segments-container">
-                    <!-- Segments will be added here -->
                 </div>
                 
                 <h3>Step 3: Preview & Generate</h3>
@@ -713,7 +753,6 @@
             </div>
         </div>
         
-        <!-- Rainbow Letters Tab -->
         <div class="tab-content" id="rainbow-tab">
             <div class="panel">
                 <h2>Rainbow Letters (Each Letter Different Color)</h2>
@@ -734,7 +773,6 @@
                 
                 <h3>Step 2: Choose Colors for Each Letter</h3>
                 <div class="color-palette" id="rainbow-color-palette">
-                    <!-- Colors will be populated by JavaScript -->
                 </div>
                 
                 <div class="selected-letter-info" id="selected-letter-info">
@@ -754,7 +792,6 @@
                 
                 <h3>Letters with Colors:</h3>
                 <div class="letter-container" id="letter-container">
-                    <!-- Letter boxes will be added here -->
                 </div>
                 
                 <h3>Step 3: Preview & Generate</h3>
@@ -794,13 +831,32 @@
         </div>
         
         <footer>
-            <p>AO Pet Renamer Tool</p>
-        </footer>
-    </div>
+			<ol>
+				<center>
+					-=PRK Scripts=-<p>
+					1. <a href="PRK-Scripts-Skuly.zip" download="PRK-Scripts-Skuly.zip" class="download-link">Download</a> PRK-Scripts-Skuly.zip<p>
+					2. Open Settings in <span class="hover-container">
+						<span class="hover-text">Launcher</span>
+						<img src="launcher-settings.jpg" alt="Launcher Settings" class="hover-image" width="250" height="70">
+					</span><p>
+					3. <span class="hover-container">
+						<span class="hover-text">Open Data Folder</span> in Launcher Settings
+						<img src="scriptsfolder.jpg" alt="Scripts Folder" class="hover-image" width="300" height="200">
+					</span><p>
+					4. The scripts folder inside the zip goes inside the Data Folder.<p>
+					5. Type <span class="hover-container">
+						<span class="hover-text">/main</span> in a chat window. I suggest you Atleast add the Main Macro to the hotbar.
+						<img src="main.jpg" alt="Scripts Folder" class="hover-image" width="350" height="250">
+					</span><p>
+					INFO:<p> When the main script is shown and you are NOT targeting something it will show Assist <span class="hover-container">
+						<span class="hover-text">(No Target)</span>
+						<img src="notarget.jpg" alt="Scripts Folder" class="hover-image" width="150" height="30">
+					</span><p>if you want to use that macro then reopen main script with a target selected.
+				</center>
+			</ol>
+		</footer>
 
     <script>
-        // FIXED: Removed duplicate cyan colors, kept only one
-        // ADDED: Dark Blue and White colors
         const colorData = [
             { code: '\x10\x01', displayCode: '', name: 'Cyan', cssColor: 'cyan', decimal: 1 },
             { code: '\x10\x03', displayCode: '', name: 'Tan', cssColor: 'tan', decimal: 3 },
@@ -815,23 +871,20 @@
             { code: '\x10\x0F', displayCode: '', name: 'White', cssColor: 'white', decimal: 15 }
         ];
 
-        // State
-        let selectedSingleColor = colorData[2]; // Yellow (index changed due to added colors)
-        let selectedMultiColor = colorData[2]; // Yellow
-        let selectedRainbowColor = colorData[2]; // Yellow
+        let selectedSingleColor = colorData[2];
+        let selectedMultiColor = colorData[2];
+        let selectedRainbowColor = colorData[2];
         let colorSegments = [];
         let rainbowName = "Rainbow";
         let letterColors = [];
-        let selectedLetterIndex = -1; // NEW: Track which letter is selected
+        let selectedLetterIndex = -1;
         
-        // Constants for limits - ALL MACROS LIMITED TO 59 CHARACTERS
         const LIMITS = {
             SINGLE_NAME_MAX: 29,
             RAINBOW_NAME_MAX: 10,
-            MACRO_MAX: 59  // ALL macros must be under 59 characters
+            MACRO_MAX: 59
         };
         
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeColorPalettes();
             initializeEventListeners();
@@ -839,37 +892,32 @@
             updateMultiColor();
             updateRainbow();
             
-            // Add initial segments for multi-color
             setTimeout(() => {
                 addColorSegment('Test', colorData[2]);
-                addColorSegment('Color', colorData[8]); // Red
-                addColorSegment('Pet', colorData[4]); // Light Green
+                addColorSegment('Color', colorData[8]);
+                addColorSegment('Pet', colorData[4]);
             }, 100);
         });
         
         function initializeColorPalettes() {
-            // Single color palette
             const singlePalette = document.getElementById('single-color-palette');
             colorData.forEach((color, index) => {
                 const option = createColorOption(color, index, 'single');
                 singlePalette.appendChild(option);
             });
             
-            // Multi color palette
             const multiPalette = document.getElementById('multi-color-palette');
             colorData.forEach((color, index) => {
                 const option = createColorOption(color, index, 'multi');
                 multiPalette.appendChild(option);
             });
             
-            // Rainbow color palette
             const rainbowPalette = document.getElementById('rainbow-color-palette');
             colorData.forEach((color, index) => {
                 const option = createColorOption(color, index, 'rainbow');
                 rainbowPalette.appendChild(option);
             });
             
-            // Set active colors (Yellow is now at index 2)
             document.querySelectorAll('#single-color-palette .color-option')[2].classList.add('active');
             document.querySelectorAll('#multi-color-palette .color-option')[2].classList.add('active');
             document.querySelectorAll('#rainbow-color-palette .color-option')[2].classList.add('active');
@@ -879,7 +927,6 @@
             const div = document.createElement('div');
             div.className = 'color-option';
             
-            // For Black and White colors, add a border to make them visible
             const borderStyle = (color.name === 'Black' || color.name === 'White') ? 'border: 2px solid #666;' : '';
             
             div.innerHTML = `
@@ -889,13 +936,11 @@
             `;
             
             div.addEventListener('click', () => {
-                // Remove active class from all options of this type
                 document.querySelectorAll(`#${type}-color-palette .color-option`).forEach(opt => {
                     opt.classList.remove('active');
                 });
                 div.classList.add('active');
                 
-                // Update selected color
                 if (type === 'single') {
                     selectedSingleColor = color;
                     updateSingleColor();
@@ -903,7 +948,6 @@
                     selectedMultiColor = color;
                 } else if (type === 'rainbow') {
                     selectedRainbowColor = color;
-                    // NEW: If a letter is selected, apply this color to it
                     if (selectedLetterIndex !== -1 && rainbowName.length > selectedLetterIndex) {
                         const colorIndex = colorData.findIndex(c => c.name === color.name);
                         letterColors[selectedLetterIndex] = colorIndex;
@@ -916,34 +960,28 @@
         }
         
         function initializeEventListeners() {
-            // Tab switching
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.addEventListener('click', () => {
                     const tabId = button.getAttribute('data-tab');
                     
-                    // Update active tab button
                     document.querySelectorAll('.tab-button').forEach(btn => {
                         btn.classList.remove('active');
                     });
                     button.classList.add('active');
                     
-                    // Update active tab content
                     document.querySelectorAll('.tab-content').forEach(content => {
                         content.classList.remove('active');
                     });
                     document.getElementById(`${tabId}-tab`).classList.add('active');
                     
-                    // Update the active tab
                     if (tabId === 'single') updateSingleColor();
                     else if (tabId === 'multi') updateMultiColor();
                     else if (tabId === 'rainbow') updateRainbow();
                 });
             });
             
-            // Single color
             const singleNameInput = document.getElementById('single-name');
             singleNameInput.addEventListener('input', function() {
-                // Limit input to 29 characters
                 if (this.value.length > LIMITS.SINGLE_NAME_MAX) {
                     this.value = this.value.substring(0, LIMITS.SINGLE_NAME_MAX);
                 }
@@ -954,7 +992,6 @@
                 copyToClipboard('single-macro', 'Single color macro');
             });
             
-            // Multi-color - FIXED EVENT LISTENERS
             document.getElementById('add-segment').addEventListener('click', function() {
                 const text = document.getElementById('segment-text').value.trim();
                 if (text) {
@@ -982,10 +1019,8 @@
                 copyToClipboard('multi-macro', 'Multi-color macro');
             });
             
-            // Rainbow
             const rainbowNameInput = document.getElementById('rainbow-name');
             rainbowNameInput.addEventListener('input', function() {
-                // Limit input to 10 characters
                 if (this.value.length > LIMITS.RAINBOW_NAME_MAX) {
                     this.value = this.value.substring(0, LIMITS.RAINBOW_NAME_MAX);
                 }
@@ -998,7 +1033,6 @@
             document.getElementById('apply-colors').addEventListener('click', applyColorToAllLetters);
             document.getElementById('clear-selection').addEventListener('click', clearLetterSelection);
             
-            // Preset buttons
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const preset = this.getAttribute('data-preset');
@@ -1007,37 +1041,29 @@
             });
         }
         
-        // Single color functions
         function updateSingleColor() {
             const nameInput = document.getElementById('single-name');
             let name = nameInput.value.trim() || 'MyPet';
-            name = name.replace(/\s+/g, ''); // Remove spaces
+            name = name.replace(/\s+/g, '');
             
-            // Limit name to 29 characters
             if (name.length > LIMITS.SINGLE_NAME_MAX) {
                 name = name.substring(0, LIMITS.SINGLE_NAME_MAX);
                 nameInput.value = name;
             }
             
-            // Update preview
             const preview = document.getElementById('single-preview');
             preview.innerHTML = `<span style="color: ${selectedSingleColor.cssColor};">${name}</span>`;
             
-            // Generate macro
             const macro = `/macro Rename /pet rename "${selectedSingleColor.code}${name}"`;
             document.getElementById('single-macro').textContent = macro;
             
-            // Update length info - ONLY show name length
             const nameLength = name.length;
             document.getElementById('single-name-length').textContent = nameLength;
             
-            // Check macro length for validation (but don't display it)
             const macroLength = macro.length;
             
-            // Update input maxlength based on remaining characters
             const remainingChars = LIMITS.SINGLE_NAME_MAX - nameLength;
             
-            // Show warning if too long
             const warning = document.getElementById('single-warning');
             
             if (nameLength >= LIMITS.SINGLE_NAME_MAX) {
@@ -1054,12 +1080,10 @@
             }
         }
         
-        // Multi-color functions - FIXED with limits
         function addColorSegment(text, color) {
             const cleanText = text.replace(/\s+/g, '');
             if (!cleanText) return;
             
-            // Check if adding this segment would exceed limits
             const testSegment = { text: cleanText, color: color };
             const testSegments = [...colorSegments, testSegment];
             const macroText = testSegments.map(s => s.color.code + s.text).join('');
@@ -1088,7 +1112,6 @@
             let macroText = '';
             
             colorSegments.forEach((segment, index) => {
-                // Add to container
                 const segmentEl = document.createElement('div');
                 segmentEl.className = 'segment';
                 segmentEl.innerHTML = `
@@ -1098,35 +1121,28 @@
                 `;
                 container.appendChild(segmentEl);
                 
-                // Add event listener to remove button
                 segmentEl.querySelector('.remove-segment').addEventListener('click', function() {
                     const idx = parseInt(this.getAttribute('data-index'));
                     colorSegments.splice(idx, 1);
                     updateMultiColor();
                 });
                 
-                // Add to preview
                 previewHTML += `<span style="color: ${segment.color.cssColor};">${segment.text}</span>`;
                 
-                // Add to macro
                 macroText += segment.color.code + segment.text;
             });
             
-            // Update preview
             document.getElementById('multi-preview').innerHTML = previewHTML || 'Add segments to see preview';
             
-            // Generate macro
             let macro = '/macro Rename /pet rename ""';
             if (colorSegments.length > 0) {
                 macro = `/macro Rename /pet rename "${macroText}"`;
             }
             document.getElementById('multi-macro').textContent = macro;
             
-            // Update length info - ONLY show macro length
             const macroLength = macro.length;
             document.getElementById('multi-macro-length').textContent = `${macroLength}/${LIMITS.MACRO_MAX}`;
             
-            // Enable/disable add button based on limits
             const addSegmentBtn = document.getElementById('add-segment');
             const segmentTextInput = document.getElementById('segment-text');
             
@@ -1142,7 +1158,6 @@
                 segmentTextInput.placeholder = 'Text for this color (no spaces)';
             }
             
-            // Show warning if too long
             const warning = document.getElementById('multi-warning');
             if (macroLength > LIMITS.MACRO_MAX) {
                 warning.style.display = 'block';
@@ -1152,13 +1167,11 @@
             }
         }
         
-        // Rainbow functions with 59 character limit
         function updateRainbow() {
             const nameInput = document.getElementById('rainbow-name');
             let name = nameInput.value.trim() || 'Rainbow';
-            name = name.replace(/\s+/g, ''); // Remove spaces
+            name = name.replace(/\s+/g, '');
             
-            // Limit to 10 characters
             if (name.length > LIMITS.RAINBOW_NAME_MAX) {
                 name = name.substring(0, LIMITS.RAINBOW_NAME_MAX);
                 nameInput.value = name;
@@ -1166,19 +1179,15 @@
             
             rainbowName = name;
             
-            // Initialize or update letter colors
             if (letterColors.length !== name.length) {
                 letterColors = [];
                 for (let i = 0; i < name.length; i++) {
-                    // Default: cycle through Yellow, Cyan, Green, Red
-                    // Indices updated due to added colors
-                    const defaultColors = [2, 0, 4, 8]; // Yellow, Cyan, Light Green, Red
+                    const defaultColors = [2, 0, 4, 8];
                     letterColors.push(defaultColors[i % defaultColors.length]);
                 }
-                selectedLetterIndex = -1; // Reset selection when name changes
+                selectedLetterIndex = -1;
             }
             
-            // Update letter display
             const letterContainer = document.getElementById('letter-container');
             letterContainer.innerHTML = '';
             
@@ -1190,7 +1199,6 @@
                 const colorIndex = letterColors[i];
                 const color = colorData[colorIndex];
                 
-                // Create letter box
                 const letterBox = document.createElement('div');
                 letterBox.className = 'letter-box';
                 if (i === selectedLetterIndex) {
@@ -1198,7 +1206,6 @@
                 }
                 letterBox.textContent = letter;
                 letterBox.style.backgroundColor = color.cssColor;
-                // Set text color based on background
                 if (color.name === 'Black') {
                     letterBox.style.color = 'white';
                 } else if (color.name === 'White') {
@@ -1209,7 +1216,6 @@
                 letterBox.title = `Letter ${i+1}: ${letter} (${color.name})\nClick to select, then choose a color from above`;
                 
                 letterBox.addEventListener('click', () => {
-                    // Toggle selection
                     if (selectedLetterIndex === i) {
                         selectedLetterIndex = -1;
                     } else {
@@ -1220,24 +1226,19 @@
                 
                 letterContainer.appendChild(letterBox);
                 
-                // Add to preview
                 previewHTML += `<span style="color: ${color.cssColor}; font-weight: bold;">${letter}</span>`;
                 
-                // Add to macro
                 macroText += color.code + letter;
             }
             
-            // Update preview
             document.getElementById('rainbow-preview').innerHTML = previewHTML || 'Enter a name';
             
-            // Generate macro
             let macro = '/macro Rename /pet rename ""';
             if (name.length > 0) {
                 macro = `/macro Rename /pet rename "${macroText}"`;
             }
             document.getElementById('rainbow-macro').textContent = macro;
             
-            // Update selected letter info
             const selectedLetterInfo = document.getElementById('selected-letter-info');
             if (selectedLetterIndex !== -1 && name.length > selectedLetterIndex) {
                 const selectedLetter = name[selectedLetterIndex];
@@ -1247,19 +1248,16 @@
                 selectedLetterInfo.textContent = 'Select a letter from below, then click a color to apply it';
             }
             
-            // Update length info
             const macroLength = macro.length;
             document.getElementById('rainbow-name-length').textContent = name.length;
             document.getElementById('rainbow-macro-length').textContent = `${macroLength}/${LIMITS.MACRO_MAX}`;
             
-            // Enable/disable input based on limits
             if (name.length >= LIMITS.RAINBOW_NAME_MAX || macroLength >= LIMITS.MACRO_MAX) {
                 nameInput.classList.add('disabled');
             } else {
                 nameInput.classList.remove('disabled');
             }
             
-            // Show warning if too long
             const warning = document.getElementById('rainbow-warning');
             if (name.length > LIMITS.RAINBOW_NAME_MAX) {
                 warning.style.display = 'block';
@@ -1288,26 +1286,22 @@
         function applyPreset(preset) {
             if (rainbowName.length === 0) return;
             
-            // Updated indices due to added colors
             switch(preset) {
                 case 'rainbow':
-                    // Yellow, Cyan, Light Green, Red, repeat
-                    const rainbowColors = [2, 0, 4, 8]; // Yellow, Cyan, Light Green, Red
+                    const rainbowColors = [2, 0, 4, 8];
                     for (let i = 0; i < rainbowName.length; i++) {
                         letterColors[i] = rainbowColors[i % rainbowColors.length];
                     }
                     break;
                     
                 case 'alternate':
-                    // Alternate between two colors
-                    const altColors = [2, 8]; // Yellow and Red
+                    const altColors = [2, 8];
                     for (let i = 0; i < rainbowName.length; i++) {
                         letterColors[i] = altColors[i % altColors.length];
                     }
                     break;
                     
                 case 'random':
-                    // Random colors
                     for (let i = 0; i < rainbowName.length; i++) {
                         letterColors[i] = Math.floor(Math.random() * colorData.length);
                     }
