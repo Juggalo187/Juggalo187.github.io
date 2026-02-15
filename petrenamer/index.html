@@ -201,6 +201,51 @@
             box-shadow: 0 0 5px rgba(58, 95, 229, 0.3);
         }
         
+        .collapsible-header {
+            cursor: pointer;
+            user-select: none;
+            padding: 15px;
+            background-color: #1a2340;
+            color: #00e1ff;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 1px solid #2a3f80;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.2s;
+        }
+        
+        .collapsible-header:hover {
+            background-color: #1e2a4a;
+        }
+        
+        .collapsible-header::before {
+            content: "▶";
+            display: inline-block;
+            transition: transform 0.2s;
+            width: 15px;
+        }
+        
+        .collapsible-header.active::before {
+            transform: rotate(90deg);
+        }
+        
+        .collapsible-content {
+            display: none;
+            padding: 15px;
+            background-color: #141a2c;
+            border: 1px solid #2a3f80;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapsible-content.active {
+            display: block;
+        }
+        
         .panel {
             background-color: #141a2c; /* Darker panel */
             border-radius: 8px;
@@ -877,29 +922,31 @@
         </div>
         
         <footer>
-			<ol>
-				<center>
-					-=PRK Scripts=-<p>
-					1. <a href="downloads/PRK-Scripts-Skuly.zip" download="PRK-Scripts-Skuly.zip" class="download-link">Download</a> PRK-Scripts-Skuly.zip<p>
-					2. Open Settings in <span class="hover-container">
-						<span class="hover-text">Launcher</span>
-						<img src="img/launcher-settings.jpg" alt="Launcher Settings" class="hover-image" width="250" height="70">
-					</span><p>
-					3. <span class="hover-container">
-						<span class="hover-text">Open Data Folder</span> in Launcher Settings
-						<img src="img/scriptsfolder.jpg" alt="Scripts Folder" class="hover-image" width="300" height="200">
-					</span><p>
-					4. The scripts folder inside the zip goes inside the Data Folder.<p>
-					5. Type <span class="hover-container">
-						<span class="hover-text">/main</span> in a chat window. I suggest you Atleast add the Main Macro to the hotbar.
-						<img src="img/main.jpg" alt="Scripts Folder" class="hover-image" width="350" height="250">
-					</span><p>
-					INFO:<p> When the main script is shown and you are NOT targeting something it will show Assist <span class="hover-container">
-						<span class="hover-text">(No Target)</span>
-						<img src="img/notarget.jpg" alt="Scripts Folder" class="hover-image" width="150" height="30">
-					</span><p>if you want to use that macro then reopen main script with a target selected.
-				</center>
-			</ol>
+			<div class="collapsible-header" id="prk-header">-=PRK Scripts=-</div>
+			<div class="collapsible-content" id="prk-content">
+				<ol>
+					<center>
+						1. <a href="downloads/PRK-Scripts-Skuly.zip" download="PRK-Scripts-Skuly.zip" class="download-link">Download</a> PRK-Scripts-Skuly.zip<p>
+						2. Open Settings in <span class="hover-container">
+							<span class="hover-text">Launcher</span>
+							<img src="img/launcher-settings.jpg" alt="Launcher Settings" class="hover-image" width="250" height="70">
+						</span><p>
+						3. <span class="hover-container">
+							<span class="hover-text">Open Data Folder</span> in Launcher Settings
+							<img src="img/scriptsfolder.jpg" alt="Scripts Folder" class="hover-image" width="300" height="200">
+						</span><p>
+						4. The scripts folder inside the zip goes inside the Data Folder.<p>
+						5. Type <span class="hover-container">
+							<span class="hover-text">/main</span> in a chat window. I suggest you Atleast add the Main Macro to the hotbar.
+							<img src="img/main.jpg" alt="Scripts Folder" class="hover-image" width="350" height="250">
+						</span><p>
+						INFO:<p> When the main script is shown and you are NOT targeting something it will show Assist <span class="hover-container">
+							<span class="hover-text">(No Target)</span>
+							<img src="img/notarget.jpg" alt="Scripts Folder" class="hover-image" width="150" height="30">
+						</span><p>if you want to use that macro then reopen main script with a target selected.
+					</center>
+				</ol>
+			</div>
 		</footer>
 
     <script>
@@ -937,6 +984,15 @@
             updateSingleColor();
             updateMultiColor();
             updateRainbow();
+            
+            // Setup collapsible PRK Scripts section
+            const prkHeader = document.getElementById('prk-header');
+            const prkContent = document.getElementById('prk-content');
+            
+            prkHeader.addEventListener('click', function() {
+                prkHeader.classList.toggle('active');
+                prkContent.classList.toggle('active');
+            });
             
             setTimeout(() => {
                 addColorSegment('Test', colorData[2]);
