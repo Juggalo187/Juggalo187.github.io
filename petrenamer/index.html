@@ -170,6 +170,37 @@
             display: block;
         }
         
+        .macro-name-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .macro-name-input label {
+            color: #8a9bb2;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        
+        .macro-name-input input {
+            padding: 8px 12px;
+            background-color: #0a0a12;
+            border: 1px solid #1a2340;
+            border-radius: 4px;
+            color: #c0c0d0;
+            font-size: 0.9rem;
+            width: auto;
+            max-width: 200px;
+        }
+        
+        .macro-name-input input:focus {
+            outline: none;
+            border-color: #3a5fe5;
+            box-shadow: 0 0 5px rgba(58, 95, 229, 0.3);
+        }
+        
         .panel {
             background-color: #141a2c; /* Darker panel */
             border-radius: 8px;
@@ -676,6 +707,11 @@
             <div class="panel">
                 <h2>Single Color Pet Name</h2>
                 
+                <div class="macro-name-input">
+                    <label for="single-macro-name">Macro Name:</label>
+                    <input type="text" id="single-macro-name" placeholder="Rename" value="Rename" maxlength="20">
+                </div>
+                
                 <div class="input-group">
                     <h3>Step 1: Choose Color</h3>
                     <div class="color-palette" id="single-color-palette">
@@ -709,6 +745,11 @@
         <div class="tab-content" id="multi-tab">
             <div class="panel">
                 <h2>Multi-Color Pet Name</h2>
+                
+                <div class="macro-name-input">
+                    <label for="multi-macro-name">Macro Name:</label>
+                    <input type="text" id="multi-macro-name" placeholder="Rename" value="Rename" maxlength="20">
+                </div>
                 
                 <div class="input-group">
                     <h3>Step 1: Choose Color</h3>
@@ -756,6 +797,11 @@
         <div class="tab-content" id="rainbow-tab">
             <div class="panel">
                 <h2>Rainbow Letters (Each Letter Different Color)</h2>
+                
+                <div class="macro-name-input">
+                    <label for="rainbow-macro-name">Macro Name:</label>
+                    <input type="text" id="rainbow-macro-name" placeholder="Rename" value="Rename" maxlength="20">
+                </div>
                 
                 <div class="input-group">
                     <h3>Step 1: Enter Pet Name</h3>
@@ -987,6 +1033,7 @@
                 }
                 updateSingleColor();
             });
+            document.getElementById('single-macro-name').addEventListener('input', updateSingleColor);
             document.getElementById('single-generate').addEventListener('click', updateSingleColor);
             document.getElementById('single-copy').addEventListener('click', () => {
                 copyToClipboard('single-macro', 'Single color macro');
@@ -1015,6 +1062,7 @@
             });
             
             document.getElementById('multi-generate').addEventListener('click', updateMultiColor);
+            document.getElementById('multi-macro-name').addEventListener('input', updateMultiColor);
             document.getElementById('multi-copy').addEventListener('click', () => {
                 copyToClipboard('multi-macro', 'Multi-color macro');
             });
@@ -1026,6 +1074,7 @@
                 }
                 updateRainbow();
             });
+            document.getElementById('rainbow-macro-name').addEventListener('input', updateRainbow);
             document.getElementById('rainbow-generate').addEventListener('click', updateRainbow);
             document.getElementById('rainbow-copy').addEventListener('click', () => {
                 copyToClipboard('rainbow-macro', 'Rainbow macro');
@@ -1054,7 +1103,9 @@
             const preview = document.getElementById('single-preview');
             preview.innerHTML = `<span style="color: ${selectedSingleColor.cssColor};">${name}</span>`;
             
-            const macro = `/macro Rename /pet rename "${selectedSingleColor.code}${name}"`;
+            const macroNameInput = document.getElementById('single-macro-name');
+            const macroName = macroNameInput.value.trim() || 'Rename';
+            const macro = `/macro ${macroName} /pet rename "${selectedSingleColor.code}${name}"`;
             document.getElementById('single-macro').textContent = macro;
             
             const nameLength = name.length;
@@ -1134,9 +1185,12 @@
             
             document.getElementById('multi-preview').innerHTML = previewHTML || 'Add segments to see preview';
             
-            let macro = '/macro Rename /pet rename ""';
+            const macroNameInput = document.getElementById('multi-macro-name');
+            const macroName = macroNameInput.value.trim() || 'Rename';
+            
+            let macro = `/macro ${macroName} /pet rename ""`;
             if (colorSegments.length > 0) {
-                macro = `/macro Rename /pet rename "${macroText}"`;
+                macro = `/macro ${macroName} /pet rename "${macroText}"`;
             }
             document.getElementById('multi-macro').textContent = macro;
             
@@ -1233,9 +1287,12 @@
             
             document.getElementById('rainbow-preview').innerHTML = previewHTML || 'Enter a name';
             
-            let macro = '/macro Rename /pet rename ""';
+            const macroNameInput = document.getElementById('rainbow-macro-name');
+            const macroName = macroNameInput.value.trim() || 'Rename';
+            
+            let macro = `/macro ${macroName} /pet rename ""`;
             if (name.length > 0) {
-                macro = `/macro Rename /pet rename "${macroText}"`;
+                macro = `/macro ${macroName} /pet rename "${macroText}"`;
             }
             document.getElementById('rainbow-macro').textContent = macro;
             
